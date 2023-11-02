@@ -27,4 +27,27 @@ public class GuideServiceImpl implements GuideService {
         );
         guideRepo.save(guide);
     }
+
+    @Override
+    public Guide updateGuide(Long id, RequestGuideDTO requestGuideDTO) {
+       Guide guideVar=guideRepo.findById(id).get();
+       guideVar.setName(requestGuideDTO.getName());
+        guideVar.setAddress(requestGuideDTO.getAddress());
+        guideVar.setAge(requestGuideDTO.getAge());
+        guideVar.setGender(requestGuideDTO.getGender());
+        guideVar.setContactNo(requestGuideDTO.getContactNo());
+
+        guideVar.setGuideIMG(requestGuideDTO.getGuideIMG());
+        guideVar.setNicFontIMG(requestGuideDTO.getNicFontIMG());
+        guideVar.setNicRearIMG(requestGuideDTO.getNicRearIMG());
+        guideVar.setGuideIdFontIMG(requestGuideDTO.getGuideIdFontIMG());
+        guideVar.setGuideIdRearIMG(requestGuideDTO.getGuideIdRearIMG());
+
+        guideVar.setExperience(requestGuideDTO.getExperience());
+        guideVar.setManDayValue(requestGuideDTO.getManDayValue());
+        guideVar.setRemarks(requestGuideDTO.getRemarks());
+
+        guideRepo.save(guideVar);
+        return guideVar;
+    }
 }
